@@ -41,12 +41,13 @@ const testData: ColumnProps[] = [
     id: 5,
     title: 'test5的专栏',
     description: '这是的test5专栏，有一段非常有意思的简介，可以更新一下欧',
-    avatar: 'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5ee22dd58b3c4520912b9470.jpg?x-oss-process=image/resize,m_pad,h_100,w_100'
+    avatar: require('./assets/120.jpg')
   },
   {
     id: 6,
     title: 'test6的专栏',
-    description: '这是的test6专栏，有一段非常有意思的简介，可以更新一下欧'
+    description: '这是的test6专栏，有一段非常有意思的简介，可以更新一下欧',
+    avatar:''
   }
 ]
 
