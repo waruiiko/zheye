@@ -19,6 +19,7 @@
   <!-- </div> -->
 </template>
 <script lang="ts">
+declare function require(img: string): string; 
 import { defineComponent, PropType,computed } from "vue";
 export interface ColumnProps {
   id: number;
@@ -44,7 +45,7 @@ export default defineComponent({
     const columnList = computed(() => { 
       return props.list.map(column => {
         if (!column.avatar) {
-          column.avatar = require('@/assets/120.jpg')
+          column.avatar = require('../assets/120.jpg');
         }
         return column
       })

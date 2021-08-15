@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+declare function require(img: string): string; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import ColumnList, { ColumnProps } from "./components/ColumnList.vue";
 import { defineComponent } from "vue";
@@ -47,7 +48,7 @@ const testData: ColumnProps[] = [
     id: 6,
     title: 'test6的专栏',
     description: '这是的test6专栏，有一段非常有意思的简介，可以更新一下欧',
-    avatar: 'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5ee22dd58b3c4520912b9470.jpg?x-oss-process=image/resize,m_pad,h_100,w_100'
+    // avatar: 'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5ee22dd58b3c4520912b9470.jpg?x-oss-process=image/resize,m_pad,h_100,w_100'
   }
 ]
 
