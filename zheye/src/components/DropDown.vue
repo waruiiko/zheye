@@ -19,25 +19,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent,ref } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   name: "DropDown",
   props: {
-      title:{
-          type: String,
-          required:true
-      }
+    title: {
+      type: String,
+      required: true,
+    },
   },
   setup() {
-      const isOpen = ref(false)
-      const clickButtonOpen = ()=>{
-          isOpen.value = !isOpen.value
-      }
-      return {
-          isOpen,
-          clickButtonOpen,
-      }
+    const isOpen = ref(false);
+    const clickButtonOpen = () => {
+      isOpen.value = !isOpen.value;
+    };
+    return {
+      isOpen,
+      clickButtonOpen,
+    };
   },
 });
 </script>
