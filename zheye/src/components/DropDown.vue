@@ -1,29 +1,43 @@
 <template>
   <div class="dropdown">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      id="dropdownMenuButton1"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
+    <a
+      href="#"
+      class="btn btn-outline-light my-2 dropdown-toggle"
+      @click.prevent="clickButtonOpen"
     >
-      Dropdown button
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      {{ title }}
+    </a>
+    <ul class="dropdown-menu" :style="{ display: 'block' }" v-if="isOpen">
+      <li class="dropdown-item">
+        <a href="#">新建文章</a>
+      </li>
+      <li class="dropdown-item">
+        <a href="#">编辑资料</a>
+      </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent,ref } from "vue";
 
 export default defineComponent({
-  setup() {},
+  name: "DropDown",
+  props: {
+      title:{
+          type: String,
+          required:true
+      }
+  },
+  setup() {
+      const isOpen = ref(false)
+      const clickButtonOpen = ()=>{
+          isOpen.value = !isOpen.value
+      }
+      return {
+          isOpen,
+          clickButtonOpen,
+      }
+  },
 });
 </script>
-
-<style scoped>
-</style>
