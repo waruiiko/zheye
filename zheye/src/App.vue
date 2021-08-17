@@ -1,5 +1,6 @@
 <template>
   <div>
+    <GlobalHeader :user="user"/>
     <ColumnList :list="list" />
   </div>
 </template>
@@ -7,9 +8,16 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import ColumnList from "./components/ColumnList.vue";
+import GlobalHeader,{UserProps} from "./components/GlobalHeader.vue"
 import ColumnProps from "./types/ColumnProps";
 import "bootstrap/dist/css/bootstrap.min.css";
 declare function require(img: string): string;
+
+const user:UserProps = {
+  isLogin:true,
+  name:'xiaoming'
+}
+
 const testData: ColumnProps[] = [
   {
     id: 1,
@@ -54,10 +62,10 @@ const testData: ColumnProps[] = [
 export default defineComponent({
   name: "App",
   components: {
-    ColumnList,
+    ColumnList,GlobalHeader
   },
   setup() {
-    return { list: testData };
+    return { list: testData ,user};
   },
 });
 </script>
