@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown" ref="dropdownRef">
     <a
       href="#"
       class="btn btn-outline-light my-2 dropdown-toggle"
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, onUnmounted, ref ,onMounted} from "vue";
 import DropDownItem from "./DropDownItem.vue"
 
 export default defineComponent({
@@ -33,9 +33,29 @@ export default defineComponent({
     const clickButtonOpen = () => {
       isOpen.value = !isOpen.value;
     };
+    //template上挂载ref，此处申明泛型，名称与其一致
+    const dropdownRef = ref<null | HTMLElement>(null);
+    const handleClick = (e:MouseEvent) => {
+      if(dropdownRef.value){
+        //对e.target类型断言，如果dropdownRef为空，且菜单打开，则关闭菜单
+        if (!dropdownRef.value.contains(e.target as HTMLElement) && isOpen.value) {
+          isOpen.value = false
+        }
+      }
+    }
+    //添加事件
+    onMounted(() => {
+      document.addEventListener("click", handleClick);
+    }),
+    //移除事件
+    onUnmounted(() => {
+      document.removeEventListener("click", handleClick);
+    })
+
     return {
       isOpen,
       clickButtonOpen,
+      dropdownRef
     };
   },
 });

@@ -14,6 +14,7 @@
         <DropDown :title="`hello! ${user.name}`">
           <DropDownItem disabled><a href="#" class="dropdown-item">新建文章</a></DropDownItem>
           <DropDownItem><a href="#" class="dropdown-item">编辑资料</a></DropDownItem>
+          <DropDownItem><a href="#" class="dropdown-item">退出登录</a></DropDownItem>
         </DropDown>
       </li>
     </ul>
