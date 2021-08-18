@@ -8,21 +8,20 @@
       {{ title }}
     </a>
     <ul class="dropdown-menu" :style="{ display: 'block' }" v-if="isOpen">
-      <li class="dropdown-item">
-        <a href="#">新建文章</a>
-      </li>
-      <li class="dropdown-item">
-        <a href="#">编辑资料</a>
-      </li>
+      <slot></slot>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import DropDownItem from "./DropDownItem.vue"
 
 export default defineComponent({
   name: "DropDown",
+  component:{
+    DropDownItem
+  },
   props: {
     title: {
       type: String,
