@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed } from "vue";
-import ColumnProps from "../types/ColumnProps";
+import ColumnProps from "../hooks/ColumnProps";
 declare function require(img: string): string;
 export default defineComponent({
   name: "ColumnList",
