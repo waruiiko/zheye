@@ -9,7 +9,7 @@
 import { defineComponent } from "vue";
 import ColumnList from "./components/ColumnList.vue";
 import GlobalHeader,{UserProps} from "./components/GlobalHeader.vue"
-import ColumnProps from "./types/ColumnProps";
+import ColumnProps from "./hooks/ColumnProps";
 import "bootstrap/dist/css/bootstrap.min.css";
 declare function require(img: string): string;
 
