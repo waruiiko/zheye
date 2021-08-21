@@ -37,9 +37,11 @@ const useClickOut = (elementRef: Ref<null | HTMLElement>) => {
       }
     }
   }
+  //添加事件
   onMounted(() => {
     document.addEventListener('click', handler)
   })
+  //移除事件
   onUnmounted(() => {
     document.removeEventListener('click', handler)
   })
