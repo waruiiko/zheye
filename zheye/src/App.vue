@@ -3,6 +3,14 @@
     <GlobalHeader :user="user" />
     <form>
       <div class="mb-3">
+        <label for="validationServer01" class="form-label">First name</label>
+        <input
+          type="text"
+          class="form-control is-valid"
+          id="validationServer01"
+          required
+        />
+
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input
           class="form-control"
@@ -12,9 +20,9 @@
           v-model="emailRef.val"
           @blur="validateEmail"
         />
-        <div id="emailHelp" class="form-text">
+        <!-- <div id="emailHelp" class="form-text">
           We'll never share your email with anyone else.
-        </div>
+        </div> -->
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -35,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent ,reactive } from "vue";
+import { defineComponent, reactive } from "vue";
 import ColumnList from "./components/ColumnList.vue";
 import GlobalHeader, { UserProps } from "./components/GlobalHeader.vue";
 import ColumnProps from "./hooks/ColumnProps";
@@ -96,17 +104,17 @@ export default defineComponent({
   },
   setup() {
     const emailRef = reactive({
-      val:'',
-      error:false,
-      message:'',
-    })
-    const validateEmail =()=>{
-      if (emailRef.val.trim()== '') {
-        emailRef.error =true; 
-        emailRef.message = 'cant be empty';      
+      val: "",
+      error: false,
+      message: "",
+    });
+    const validateEmail = () => {
+      if (emailRef.val.trim() == "") {
+        emailRef.error = true;
+        emailRef.message = "cant be empty";
       }
-    }
-    return { list: testData, user,emailRef,validateEmail };
+    };
+    return { list: testData, user, emailRef, validateEmail };
   },
 });
 </script>
