@@ -1,7 +1,9 @@
 <template>
   <div>
     <GlobalHeader :user="user" />
-    <form>
+    <label class="form-label">邮箱地址</label>
+    <validate-input :rules="emailRules"></validate-input>
+    <!-- <form>
       <div class="mb-3">
         <label for="validationServer01" class="form-label">First name</label>
         <input
@@ -20,9 +22,9 @@
           v-model="emailRef.val"
           @blur="validateEmail"
         />
-        <!-- <div id="emailHelp" class="form-text">
+        <div id="emailHelp" class="form-text">
           We'll never share your email with anyone else.
-        </div> -->
+        </div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -37,7 +39,7 @@
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </form> -->
     <ColumnList :list="list" />
   </div>
 </template>
@@ -48,6 +50,8 @@ import ColumnList from "./components/ColumnList.vue";
 import GlobalHeader, { UserProps } from "./components/GlobalHeader.vue";
 import ColumnProps from "./hooks/ColumnProps";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ValidateInput from "./components/ValidateInput.vue";
+import {RulesProp} from './hooks/RuleProp'
 declare function require(img: string): string;
 
 const user: UserProps = {
@@ -101,8 +105,13 @@ export default defineComponent({
   components: {
     ColumnList,
     GlobalHeader,
+    ValidateInput,
   },
   setup() {
+    const emailRules: RulesProp = [
+      { type: "required", message: "电子邮箱地址不能为空" },
+      { type: "email", message: "请输入正确的电子邮箱格式" },
+    ];
     const emailRef = reactive({
       val: "",
       error: false,
@@ -114,7 +123,7 @@ export default defineComponent({
         emailRef.message = "cant be empty";
       }
     };
-    return { list: testData, user, emailRef, validateEmail };
+    return { list: testData, user, emailRef, validateEmail, emailRules };
   },
 });
 </script>
