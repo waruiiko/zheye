@@ -51,7 +51,7 @@ import GlobalHeader, { UserProps } from "./components/GlobalHeader.vue";
 import ColumnProps from "./hooks/ColumnProps";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ValidateInput from "./components/ValidateInput.vue";
-import {RulesProp} from './hooks/RuleProp'
+import { RulesProp } from "./hooks/RuleProp";
 declare function require(img: string): string;
 
 const user: UserProps = {
@@ -123,7 +123,13 @@ export default defineComponent({
         emailRef.message = "cant be empty";
       }
     };
-    return { list: testData, user, emailRef, validateEmail, emailRules };
+    return {
+      list: testData,
+      user,
+      emailRef,
+      validateEmail,
+      emailRules,
+    };
   },
 });
 </script>
