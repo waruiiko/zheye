@@ -1,7 +1,8 @@
 <template>
   <div>
     <GlobalHeader :user="user" />
-    <form action="">
+    <!-- @Form-submit用于监听事件 -->
+    <validate-form @form-submit="onFormSubmit">
       <div class="mb-3">
         <label class="form-label">邮箱地址</label>
         <validate-input
@@ -22,7 +23,12 @@
           type="password"
         />
       </div>
-    </form>
+      <!-- v-slot可以简写为# -->
+      <!-- <template v-slot:submit> -->
+      <template #submit>
+        <span class="btn btn-danger">submit</span>
+      </template>
+    </validate-form>
     <!-- <form>
       <div class="mb-3">
         <label for="validationServer01" class="form-label">First name</label>
@@ -72,6 +78,7 @@ import ColumnProps from "./hooks/ColumnProps";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ValidateInput from "./components/ValidateInput.vue";
 import { RulesProp } from "./hooks/RuleProp";
+import ValidateForm from "./components/ValidateForm.vue";
 declare function require(img: string): string;
 
 const user: UserProps = {
@@ -126,6 +133,7 @@ export default defineComponent({
     ColumnList,
     GlobalHeader,
     ValidateInput,
+    ValidateForm,
   },
   setup() {
     const emailVal = ref("");
@@ -151,6 +159,11 @@ export default defineComponent({
         emailRef.message = "cant be empty";
       }
     };
+
+    const onFormSubmit = (result:boolean) => {
+      console.log("123", result);
+    }
+
     return {
       list: testData,
       user,
@@ -159,7 +172,8 @@ export default defineComponent({
       emailRules,
       emailVal,
       passwordVal,
-      passwordRules
+      passwordRules,
+      onFormSubmit
     };
   },
 });
