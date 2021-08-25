@@ -1,9 +1,27 @@
 <template>
   <div>
     <GlobalHeader :user="user" />
-    <label class="form-label">邮箱地址</label>
-    <validate-input :rules="emailRules" v-model="emailVal"></validate-input>
-    {{emailVal}}
+    <form action="">
+      <div class="mb-3">
+        <label class="form-label">邮箱地址</label>
+        <validate-input
+          :rules="emailRules"
+          v-model="emailVal"
+          placeholder="write here"
+          type="text"
+        ></validate-input>
+        {{ emailVal }}
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <validate-input
+          :rules="passwordRules"
+          v-model="passwordVal"
+          placeholder="password here"
+          type="password"
+        />
+      </div>
+    </form>
     <!-- <form>
       <div class="mb-3">
         <label for="validationServer01" class="form-label">First name</label>
@@ -46,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive ,ref} from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import ColumnList from "./components/ColumnList.vue";
 import GlobalHeader, { UserProps } from "./components/GlobalHeader.vue";
 import ColumnProps from "./hooks/ColumnProps";
@@ -109,12 +127,20 @@ export default defineComponent({
     ValidateInput,
   },
   setup() {
-    const emailVal = ref('xiaoming')
+    const emailVal = ref("");
+    const passwordVal = ref("");
+
 
     const emailRules: RulesProp = [
       { type: "required", message: "电子邮箱地址不能为空" },
       { type: "email", message: "请输入正确的电子邮箱格式" },
     ];
+
+    const passwordRules: RulesProp = [
+      { type: "required", message: "密码不能为空" },
+      { type: "password", message: "请输入正确的密码" },
+    ];
+
     const emailRef = reactive({
       val: "",
       error: false,
@@ -132,7 +158,9 @@ export default defineComponent({
       emailRef,
       validateEmail,
       emailRules,
-      emailVal
+      emailVal,
+      passwordVal,
+      passwordRules
     };
   },
 });
