@@ -139,13 +139,13 @@ export default defineComponent({
   setup() {
     //通过ref这个attribute为子组件赋予一个ID（inputRef）使用，可以访问子组件的实例或者元素
     const inputRef = ref<any>()
-    const emailVal = ref("");
+    const emailVal = ref("xiaoming@123.com");
     const emailRules: RulesProp = [
       { type: "required", message: "电子邮箱地址不能为空" },
       { type: "email", message: "请输入正确的电子邮箱格式" },
     ];
 
-    const passwordVal = ref("");
+    const passwordVal = ref("a123123123");
     const passwordRules: RulesProp = [
       { type: "required", message: "密码不能为空" },
       { type: "password", message: "请输入正确的密码" },
