@@ -11,6 +11,7 @@
           placeholder="write here"
           type="text"
           @blur="validateEmail"
+          ref="inputRef"
         ></validate-input>
         {{ emailVal }}
       </div>
@@ -136,6 +137,8 @@ export default defineComponent({
     ValidateForm,
   },
   setup() {
+    //通过ref这个attribute为子组件赋予一个ID（inputRef）使用，可以访问子组件的实例或者元素
+    const inputRef = ref<any>()
     const emailVal = ref("");
     const emailRules: RulesProp = [
       { type: "required", message: "电子邮箱地址不能为空" },
@@ -161,6 +164,7 @@ export default defineComponent({
     };
 
     const onFormSubmit = (result:boolean) => {
+      console.log("!",inputRef.value.validateInput())
       console.log("123", result);
     }
 
@@ -173,7 +177,8 @@ export default defineComponent({
       emailVal,
       passwordVal,
       passwordRules,
-      onFormSubmit
+      onFormSubmit,
+      inputRef
     };
   },
 });
