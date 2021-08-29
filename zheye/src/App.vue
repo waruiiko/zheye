@@ -1,6 +1,7 @@
 <template>
   <div>
     <GlobalHeader :user="user" />
+    <router-view></router-view>
     <!-- @Form-submit用于监听事件 -->
     <validate-form @form-submit="onFormSubmit">
       <div class="mb-3">
