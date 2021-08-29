@@ -41,6 +41,7 @@ import { defineComponent, reactive, ref } from "vue";
 import ValidateInput from "../components/ValidateInput.vue";
 import { RulesProp } from "../hooks/RuleProp";
 import ValidateForm from "../components/ValidateForm.vue";
+import {useRouter} from "vue-router"
 // declare function require(img: string): string;
 
 export default defineComponent({
@@ -52,6 +53,7 @@ export default defineComponent({
     ValidateForm,
   },
   setup() {
+    const router = useRouter()
     //通过ref这个attribute为子组件赋予一个ID（inputRef）使用，可以访问子组件的实例或者元素
     const inputRef = ref<any>()
     const emailVal = ref("");
@@ -81,6 +83,10 @@ export default defineComponent({
     const onFormSubmit = (result:boolean) => {
       console.log("!",inputRef.value.validateInput())
       console.log("123", result);
+      if(result) {
+        // router.push("/column/1")
+        router.push({name:'column',params:{id:1}})
+      }
     }
 
     return {
