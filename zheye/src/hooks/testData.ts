@@ -23,7 +23,7 @@ export const testPosts: PostProps[] = [
         id:2,
         title: "Second title",
         content: "This is my second title",
-        image: require("../assets/logo.png"),
+        image: "http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5ee1980819f4ae08ac78d458.png?x-oss-process=image/resize,m_fill,m_pad,w_200,h_110",
         createdAt: "2021-08-31 21:02:02",
         columnId:1
     },
