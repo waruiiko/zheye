@@ -16,7 +16,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from "vue";
 import DropDownItem from "./DropDownItem.vue";
-import useClickOut from "../hooks/useClickOut";
+import useClickOut from "../hooks/UseClickOut";
 
 export default defineComponent({
   name: "DropDown",
