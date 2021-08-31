@@ -7,13 +7,13 @@
 import { defineComponent, } from "vue";
 import ColumnList from "../components/ColumnList.vue";
 // import GlobalHeader, { UserProps } from "./components/GlobalHeader.vue";
-import ColumnProps from "../hooks/ColumnProps";
+import {testData} from "../hooks/ColumnProps";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import ValidateInput from "./components/ValidateInput.vue";
 // import { RulesProp } from "./hooks/RuleProp";
 // import ValidateForm from "./components/ValidateForm.vue";
-import {testData} from "../hooks/testData";
-declare function require(img: string): string;
+// import {} from "../hooks/ColumnProps";
+// declare function require(img: string): string;
 
 
 // const testData: ColumnProps[] = [
