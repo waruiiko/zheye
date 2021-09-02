@@ -11,7 +11,7 @@ export interface PostProps {
 }
 
 export const testPosts: PostProps[] = [
-    { 
+    {
         id:1,
         title: "First title",
         content: "This is my first title",
