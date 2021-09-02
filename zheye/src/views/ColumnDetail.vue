@@ -23,21 +23,25 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent,computed} from "vue";
 import { useRoute } from "vue-router";
 import { testData } from "../hooks/ColumnProps";
 import { testPosts } from "../hooks/TestData";
 import PostList from "../components/PostList.vue";
+import { GlobalDataProps } from "../store";
+import { useStore } from "vuex"
 
 export default defineComponent({
   components: {
     PostList,
   },
   setup() {
+    const store = useStore<GlobalDataProps>();
     const route = useRoute();
     const currentId = +route.params.id;
-    const column = testData.find((c) => c.id == currentId);
-    const list = testPosts.filter((post) => post.columnId == currentId);
+    const column = computed(()=>store.state.columns.find(c => c.id == currentId));
+    const list = computed(()=>store.state.posts.filter(post => post.columnId == currentId));
+    console.log("+",list,column)
     return {
       route,
       column,
