@@ -1,12 +1,12 @@
 <template>
   <div>
-    <GlobalHeader :user="user" />
+    <GlobalHeader :user="currentUser" />
     <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent} from "vue";
+import { defineComponent, computed } from "vue";
 // import ColumnList from "./components/ColumnList.vue";
 import GlobalHeader, { UserProps } from "./components/GlobalHeader.vue";
 // import ColumnProps from "./hooks/ColumnProps";
@@ -15,11 +15,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { RulesProp } from "./hooks/RuleProp";
 // import ValidateForm from "./components/ValidateForm.vue";
 // declare function require(img: string): string;
+import { useStore } from "vuex";
 
-const user: UserProps = {
-  isLogin: false,
-  name: "xiaoming",
-};
+// const user: UserProps = {
+//   isLogin: false,
+//   name: "xiaoming",
+// };
 
 // const testData: ColumnProps[] = [
 //   {
@@ -63,56 +64,59 @@ const user: UserProps = {
 //   },
 // ];
 export default defineComponent({
-//   name: "App",
+  //   name: "App",
   components: {
-//     ColumnList,
+    //     ColumnList,
     GlobalHeader,
-//     ValidateInput,
-//     ValidateForm,
+    //     ValidateInput,
+    //     ValidateForm,
   },
   setup() {
-  //   //通过ref这个attribute为子组件赋予一个ID（inputRef）使用，可以访问子组件的实例或者元素
-  //   const inputRef = ref<any>()
-  //   const emailVal = ref("");
-  //   const emailRules: RulesProp = [
-  //     { type: "required", message: "电子邮箱地址不能为空" },
-  //     { type: "email", message: "请输入正确的电子邮箱格式" },
-  //   ];
+    const store = useStore();
+    const currentUser = computed(() => store.state.user);
+    //   //通过ref这个attribute为子组件赋予一个ID（inputRef）使用，可以访问子组件的实例或者元素
+    //   const inputRef = ref<any>()
+    //   const emailVal = ref("");
+    //   const emailRules: RulesProp = [
+    //     { type: "required", message: "电子邮箱地址不能为空" },
+    //     { type: "email", message: "请输入正确的电子邮箱格式" },
+    //   ];
 
-  //   const passwordVal = ref("");
-  //   const passwordRules: RulesProp = [
-  //     { type: "required", message: "密码不能为空" },
-  //     { type: "password", message: "请输入正确的密码" },
-  //   ];
+    //   const passwordVal = ref("");
+    //   const passwordRules: RulesProp = [
+    //     { type: "required", message: "密码不能为空" },
+    //     { type: "password", message: "请输入正确的密码" },
+    //   ];
 
-  //   const emailRef = reactive({
-  //     val: "",
-  //     error: false,
-  //     message: "",
-  //   });
-  //   const validateEmail = () => {
-  //     if (emailRef.val.trim() == "") {
-  //       emailRef.error = true;
-  //       emailRef.message = "cant be empty";
-  //     }
-  //   };
+    //   const emailRef = reactive({
+    //     val: "",
+    //     error: false,
+    //     message: "",
+    //   });
+    //   const validateEmail = () => {
+    //     if (emailRef.val.trim() == "") {
+    //       emailRef.error = true;
+    //       emailRef.message = "cant be empty";
+    //     }
+    //   };
 
-  //   const onFormSubmit = (result:boolean) => {
-  //     console.log("!",inputRef.value.validateInput())
-  //     console.log("123", result);
-  //   }
+    //   const onFormSubmit = (result:boolean) => {
+    //     console.log("!",inputRef.value.validateInput())
+    //     console.log("123", result);
+    //   }
 
     return {
-  //     list: testData,
-      user,
-  //     emailRef,
-  //     validateEmail,
-  //     emailRules,
-  //     emailVal,
-  //     passwordVal,
-  //     passwordRules,
-  //     onFormSubmit,
-  //     inputRef
+      //     list: testData,
+      // user,
+      currentUser,
+      //     emailRef,
+      //     validateEmail,
+      //     emailRules,
+      //     emailVal,
+      //     passwordVal,
+      //     passwordRules,
+      //     onFormSubmit,
+      //     inputRef
     };
   },
 });
