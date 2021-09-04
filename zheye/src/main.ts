@@ -5,6 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Column from './views/ColumnDetail.vue'
+import CreatePost from './views/CreatePost.vue'
 // import {createStore}from 'vuex'
 
 import store from './store'
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/column/:id',
       name: 'column',
       component: Column
+    },
+    {
+      path: '/create',
+      name: 'create',
+      component: CreatePost
     }
   ]
 })
