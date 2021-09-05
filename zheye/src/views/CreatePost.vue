@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4>新建文章</h4>
-    <validate-form @form-submit="onFormSubmit">
+    <validate-form>
       <div class="mb-3">
         <label class="form-label">文章标题：</label>
         <validate-input
@@ -35,6 +35,7 @@ export default defineComponent({
     ValidateForm,
   },
   setup() {
+    const titleVal = ref("");
     const titleRules: RulesProp = [
       { type: "required", message: "文章标题不能为空" },
     ];
@@ -43,6 +44,7 @@ export default defineComponent({
       { type: "required", message: "文章详情不能为空" },
     ];
     return {
+      titleVal,
       titleRules,
       contentVal,
       contentRules,
