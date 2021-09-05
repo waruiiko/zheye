@@ -1,5 +1,5 @@
 interface RuleProp {
-    type: 'required' | 'email' | 'password';
+    type: 'required' | 'email' | 'password' |'title' | 'content';
     message: string;
   }
 
