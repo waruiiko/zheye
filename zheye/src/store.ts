@@ -6,6 +6,7 @@ interface UserProps {
     isLogin: boolean;
     name?: string;
     id?: number;
+    columnId?: number
 }
 export interface GlobalDataProps {
     columns: ColumnProps[];
@@ -18,13 +19,17 @@ const store = createStore({
         columns: testData,
         posts: testPosts,
         user: {
-            isLogin: false,
-            name: ''
+            isLogin: true,
+            name: 'xiaooming',
+            columnId:1
         }
     },
     mutations: {
         login(state) {
             state.user = { ...state.user, isLogin: true, name: 'xiaomingg' }
+        },
+        createPost(state,newPost){
+            state.posts.push(newPost)
         }
     },
     getters:{
