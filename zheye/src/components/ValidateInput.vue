@@ -1,7 +1,16 @@
 <template>
   <div class="validate-input-container pb-3">
     <input
-      type="text"
+      v-if="tag != 'textarea'"
+      class="form-control"
+      :class="{ 'is-invalid': inputRef.error }"
+      :value="inputRef.val"
+      @blur="validateInput"
+      @input="updateValue"
+      v-bind="$attrs"
+    />
+    <textarea
+      v-else
       class="form-control"
       :class="{ 'is-invalid': inputRef.error }"
       :value="inputRef.val"
@@ -36,11 +45,16 @@ const pwReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 // 长度8到10，, 包含大小写数字和特殊字符
 // "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$"
+export type TagType = 'input' | 'textarea' 
 
 export default defineComponent({
   props: {
     rules: Array as PropType<RulesProp>,
     modelValue: String,
+    tag:{
+      type:String as PropType<TagType>,
+      default:'input'
+    }
   },
   //禁用Attribute继承
   inheritAttrs: false,

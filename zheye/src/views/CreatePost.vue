@@ -16,6 +16,7 @@
         <validate-input
           rows="10"
           tag="textarea"
+          type="text"
           placeholder="请输入文章详情"
           :rules="contentRules"
           v-model="contentVal"
