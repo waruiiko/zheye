@@ -19,7 +19,7 @@ const store = createStore({
         columns: testData,
         posts: testPosts,
         user: {
-            isLogin: true,
+            isLogin: false,
             name: 'xiaooming',
             columnId:1
         }
