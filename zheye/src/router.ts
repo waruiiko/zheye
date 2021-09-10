@@ -17,6 +17,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
+      meta: { redirectAlreadyLogin: true },
       component: Login
     },
     {
@@ -27,15 +28,19 @@ const router = createRouter({
     {
       path: '/create',
       name: 'create',
+      meta: { requiredLogin: true },
       component: CreatePost
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  if(to.name != 'login' && !store.state.user.isLogin){
-    next({name: 'login'})
-  }else{
+  // console.log(to.meta)
+  if (to.meta.requiredLogin && !store.state.user.isLogin) {
+    next({ name: 'login' })
+  } else if(to.meta.redirectAlreadyLogin && store.state.user.isLogin) {
+    next('/') //判断是否已经登录
+  }else {
     next();
   }
 })
