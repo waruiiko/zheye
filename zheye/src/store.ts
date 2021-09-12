@@ -31,13 +31,16 @@ const store = createStore({
         },
         createPost(state, newPost) {
             state.posts.push(newPost)
+        },
+        fetchColumns(state,rawData) {
+            state.columns = rawData.data
         }
     },
     actions: {
-        fetchColumn(context){
+        fetchColumns(context){
             axios.get('/bitcoin').then(resp=>{
                 // console.log('price',resp.data.market_data.current_price.usd)
-                context.commit('fetchColumn',resp.data)
+                context.commit('fetchColumns',resp.data)
             })
         }
     },
