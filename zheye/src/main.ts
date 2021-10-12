@@ -17,7 +17,7 @@ axios.defaults.baseURL = 'https://api.coingecko.com/api/v3/coins/'
 //测试
 // axios.get('/bitcoin').then(resp => {
 //     // console.log(resp)
-//     console.log(resp.data)
+//     console.log(resp.data.market_data)
 // })
 
 const app = createApp(App)
