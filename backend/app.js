@@ -20,7 +20,6 @@ client.connect(function(err) {
   client.close();
 });
 
-
 const insertDocuments = function(db, callback) {
     // Get the documents collection
     const collection = db.collection('documents');
